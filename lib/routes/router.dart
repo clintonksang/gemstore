@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_assignment/presentation/screens/dash.dart';
 import 'package:flutter_assignment/presentation/screens/onboarding/onboarding.dart';
 import 'package:logger/logger.dart';
@@ -31,7 +32,7 @@ class AppRouter {
   }
 
   static _route(Widget page) {
-    return CupertinoPageRoute(
+    return MaterialPageRoute(
       builder: (context) {
         return page;
       },

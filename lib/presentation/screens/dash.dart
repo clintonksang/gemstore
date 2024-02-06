@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment/presentation/screens/cart/orders.dart';
 import 'package:flutter_assignment/presentation/screens/home/homescreen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../search/found_results.dart';
 import '../utils/app_colors.dart';
 
 class Dashboard extends StatefulWidget {
@@ -22,9 +24,9 @@ class _DashboardState extends State<Dashboard> {
 
   List<Widget> _buildScreens() {
     return [
-      HomeScreen(),
-      SearchScreen(),
-      CartScreen(),
+      const HomeScreen(),
+      const FoundResults(),
+      const Orders(),
       ProfileScreen(),
     ];
   }
@@ -86,7 +88,7 @@ class _DashboardState extends State<Dashboard> {
       controller: _controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
-      navBarHeight: 100,
+      navBarHeight: 50,
       onItemSelected: (value) {
         setState(() {
           activeColor = AppColors().secondaryColor;
@@ -100,20 +102,6 @@ class _DashboardState extends State<Dashboard> {
       navBarStyle: NavBarStyle.style6,
     );
   }
-}
-
- 
-
-class SearchScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) =>
-      Scaffold(body: Center(child: Text("Search Screen")));
-}
-
-class CartScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) =>
-      Scaffold(body: Center(child: Text("Cart Screen")));
 }
 
 class ProfileScreen extends StatelessWidget {

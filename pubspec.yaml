@@ -14,6 +14,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.0.2
+  animated_rating_stars: ^1.0.1
   flutter_svg: ^2.0.9
   google_fonts: ^6.1.0
   logger: ^2.0.2+1
@@ -33,7 +34,7 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/images/logo.png"
+  image_path: "assets/logo.png"
   background_color: "#FFFFFF"
 
 flutter_native_splash:

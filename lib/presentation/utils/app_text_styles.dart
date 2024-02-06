@@ -22,4 +22,14 @@ class AppTextStyle {
           color ?? AppColors().secondaryColor, // Default color if none provided
     );
   }
+
+    static TextStyle light({Color? color}) {
+    return TextStyle(
+      fontFamily: 'ProductSans-Light',
+      fontWeight: FontWeight.w100,
+      fontSize: 16,
+      color:
+          color ?? AppColors().secondaryColor, // Default color if none provided
+    );
+  }
 }

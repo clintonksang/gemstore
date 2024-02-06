@@ -9,6 +9,7 @@ class Root extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         onGenerateRoute: AppRouter.onGenerateRoute,
+        initialRoute: AppRouter.initial,
         title: 'Gem Store',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
