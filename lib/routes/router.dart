@@ -1,31 +1,29 @@
- 
- 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_assignment/presentation/screens/dash.dart';
 import 'package:flutter_assignment/presentation/screens/onboarding/onboarding.dart';
 import 'package:logger/logger.dart';
 import 'package:page_transition/page_transition.dart';
 
- 
 class AppRouter {
   static const String initial = "/";
-
+  static const String dashboard = "/dashboard";
 
   static Route? onGenerateRoute(RouteSettings settings) {
-
     Logger logger = Logger();
     logger.w("Route Name:\n${settings.name}");
 
     switch (settings.name) {
- 
       case initial:
+        logger.w("Initial Route : Onboarding");
         return _route(
-          const Onboarding(),
+          Onboarding(),
         );
-    
-//  case landingPage:
-//         return _transition(
-//           const LandingPageWidget(),
-//         );
+
+      case dashboard:
+        logger.w("Dashboard");
+        return _route(
+          Dashboard(),
+        );
 
       default:
         return null;
@@ -44,7 +42,6 @@ class AppRouter {
     return PageTransition(
       child: page,
       type: PageTransitionType.rightToLeft,
-      duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
       isIos: true,
     );
