@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment/presentation/screens/home/homescreen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -31,21 +32,21 @@ class _DashboardState extends State<Dashboard> {
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset("assets/images/home.svg",
+        icon: SvgPicture.asset("assets/images/svg/home.svg",
             width: 21, color: AppColors().secondaryColor),
-        inactiveIcon: SvgPicture.asset("assets/images/home.svg",
+        inactiveIcon: SvgPicture.asset("assets/images/svg/home.svg",
             width: 21, color: AppColors().inactiveButtonColor),
         activeColorPrimary: AppColors().secondaryColor,
         inactiveColorPrimary: AppColors().inactiveButtonColor,
       ),
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
-          "assets/images/search.svg",
+          "assets/images/svg/search.svg",
           width: 21,
           color: AppColors().secondaryColor,
         ),
         inactiveIcon: SvgPicture.asset(
-          "assets/images/search.svg",
+          "assets/images/svg/search.svg",
           width: 21,
           color: AppColors().inactiveButtonColor,
         ),
@@ -54,23 +55,23 @@ class _DashboardState extends State<Dashboard> {
       ),
       PersistentBottomNavBarItem(
           icon: SvgPicture.asset(
-            "assets/images/cart.svg",
+            "assets/images/svg/cart.svg",
             width: 21,
             color: AppColors().secondaryColor,
           ),
           inactiveIcon: SvgPicture.asset(
-            "assets/images/cart.svg",
+            "assets/images/svg/cart.svg",
             width: 21,
             color: AppColors().inactiveButtonColor,
           )),
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
-          "assets/images/profile.svg",
+          "assets/images/svg/profile.svg",
           width: 21,
           color: AppColors().secondaryColor,
         ),
         inactiveIcon: SvgPicture.asset(
-          "assets/images/profile.svg",
+          "assets/images/svg/profile.svg",
           width: 21,
           color: AppColors().inactiveButtonColor,
         ),
@@ -101,11 +102,7 @@ class _DashboardState extends State<Dashboard> {
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) =>
-      Scaffold(body: Center(child: Text("Home Screen")));
-}
+ 
 
 class SearchScreen extends StatelessWidget {
   @override

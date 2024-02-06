@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
-  final Color? buttonColor; // Optional parameter with default value
-  final Color? borderlineColor; // Optional parameter with default value
-  final Color? textColor; // Optional parameter with default value
+  final Color? buttonColor; 
+  final Color? borderlineColor; 
+  final Color? textColor; 
 
   const CustomButton({
     Key? key,
     required this.label,
     required this.onPressed,
     this.buttonColor =
-        Colors.transparent, // Default to transparent if not provided
-    this.borderlineColor = Colors.black, // Default to black if not provided
-    this.textColor = Colors.black, // Default to black if not provided
+        Colors.transparent, 
+    this.borderlineColor = Colors.black, 
+    this.textColor = Colors.black, 
   }) : super(key: key);
 
   @override
@@ -24,9 +24,9 @@ class CustomButton extends StatelessWidget {
       style: OutlinedButton.styleFrom(
         foregroundColor: textColor,
         fixedSize: const Size(193, 53),
-        backgroundColor: buttonColor, // Use buttonColor for the background
+        backgroundColor: buttonColor, 
         side: BorderSide(
-            color: borderlineColor!), // Use borderlineColor for the border
+            color: borderlineColor!), 
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(35),
         ),
@@ -36,7 +36,7 @@ class CustomButton extends StatelessWidget {
         style: TextStyle(
             color: textColor,
             fontSize: 16,
-            fontWeight: FontWeight.bold), // Apply textColor to Text widget
+            fontWeight: FontWeight.bold), 
       ),
     );
   }

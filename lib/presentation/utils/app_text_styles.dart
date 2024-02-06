@@ -16,7 +16,6 @@ class AppTextStyle {
   static TextStyle subtitle({Color? color}) {
     return TextStyle(
       fontFamily: 'ProductSans',
-
       fontWeight: FontWeight.w700,
       fontSize: 16,
       color:

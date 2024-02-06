@@ -7,6 +7,8 @@ class AppColors {
   Color backgroundColor = const Color(0xffFFFFFF);
   Color activeButtonColor = const Color(0XFF3A2C27);
   Color inactiveButtonColor = const Color(0XFFF3F3F3);
-   
+  // #F3F3F3
+  // background: #;
+
   final gradient = <Color>[];
 }

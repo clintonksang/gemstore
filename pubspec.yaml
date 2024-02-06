@@ -9,6 +9,7 @@ environment:
   sdk: ">=3.2.6 <4.0.0"
 
 dependencies:
+  carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
@@ -43,6 +44,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/svg/
   fonts:
     - family: ProductSans
       fonts:
