@@ -10,6 +10,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  Color activeColor = AppColors().secondaryColor;
   late PersistentTabController _controller;
 
   @override
@@ -30,24 +31,49 @@ class _DashboardState extends State<Dashboard> {
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset("assets/images/home.svg", width: 21),
+        icon: SvgPicture.asset("assets/images/home.svg",
+            width: 21, color: AppColors().secondaryColor),
+        inactiveIcon: SvgPicture.asset("assets/images/home.svg",
+            width: 21, color: AppColors().inactiveButtonColor),
         activeColorPrimary: AppColors().secondaryColor,
         inactiveColorPrimary: AppColors().inactiveButtonColor,
       ),
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset("assets/images/search.svg", width: 21),
+        icon: SvgPicture.asset(
+          "assets/images/search.svg",
+          width: 21,
+          color: AppColors().secondaryColor,
+        ),
+        inactiveIcon: SvgPicture.asset(
+          "assets/images/search.svg",
+          width: 21,
+          color: AppColors().inactiveButtonColor,
+        ),
         activeColorPrimary: AppColors().secondaryColor,
         inactiveColorPrimary: AppColors().inactiveButtonColor,
       ),
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset("assets/images/cart.svg", width: 21),
-        activeColorPrimary: AppColors().secondaryColor,
-        inactiveColorPrimary: AppColors().inactiveButtonColor,
-      ),
+          icon: SvgPicture.asset(
+            "assets/images/cart.svg",
+            width: 21,
+            color: AppColors().secondaryColor,
+          ),
+          inactiveIcon: SvgPicture.asset(
+            "assets/images/cart.svg",
+            width: 21,
+            color: AppColors().inactiveButtonColor,
+          )),
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset("assets/images/profile.svg", width: 21),
-        activeColorPrimary: AppColors().secondaryColor,
-        inactiveColorPrimary: AppColors().inactiveButtonColor,
+        icon: SvgPicture.asset(
+          "assets/images/profile.svg",
+          width: 21,
+          color: AppColors().secondaryColor,
+        ),
+        inactiveIcon: SvgPicture.asset(
+          "assets/images/profile.svg",
+          width: 21,
+          color: AppColors().inactiveButtonColor,
+        ),
       ),
     ];
   }
@@ -60,14 +86,17 @@ class _DashboardState extends State<Dashboard> {
       screens: _buildScreens(),
       items: _navBarsItems(),
       navBarHeight: 100,
+      onItemSelected: (value) {
+        setState(() {
+          activeColor = AppColors().secondaryColor;
+        });
+      },
       confineInSafeArea: true,
       screenTransitionAnimation: const ScreenTransitionAnimation(
         animateTabTransition: true,
       ),
       backgroundColor: Colors.white,
-
-      navBarStyle:
-          NavBarStyle.style6, // Choose the nav bar style with this option.
+      navBarStyle: NavBarStyle.style6,
     );
   }
 }
