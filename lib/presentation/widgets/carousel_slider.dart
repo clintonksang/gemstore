@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_assignment/presentation/utils/app_text_styles.dart';
+import 'package:flutter_assignment/presentation/widgets/loader.dart';
 
 class Carousel extends StatefulWidget {
   @override
@@ -10,9 +12,9 @@ class Carousel extends StatefulWidget {
 class _CarouselState extends State<Carousel> {
   int _currentIndex = 0;
   final List<String> imgList = [
-    'assets/images/lady.jpeg',
-    'assets/images/lady2.jpg',
-    'assets/images/lady3.jpg',
+    'https://firebasestorage.googleapis.com/v0/b/xplore-26809.appspot.com/o/lady%20(1).jpg?alt=media&token=ec8e702d-1bc8-40a5-a6d0-c229b399fbd2',
+    'https://firebasestorage.googleapis.com/v0/b/xplore-26809.appspot.com/o/lady2.jpg?alt=media&token=6557e38a-3419-44eb-8ab7-593b243292f2',
+    // 'https://firebasestorage.googleapis.com/v0/b/xplore-26809.appspot.com/o/lady3.jpg?alt=media&token=5560c951-e27c-4b1c-b6e6-25ba9bcd02cb',
   ];
 
   @override
@@ -25,12 +27,15 @@ class _CarouselState extends State<Carousel> {
         children: [
           CarouselSlider(
             items: imgList
-                .map((item) => Container(
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.cover, image: AssetImage(item)),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(25))),
+                .map((item) => ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(25)),
+                      child: CachedNetworkImage(
+                        imageUrl: item,
+                        fit: BoxFit.cover,
+                        width: screenSize.width,
+                        placeholder: (context, url) => Loader(),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),
                     ))
                 .toList(),
             options: CarouselOptions(
@@ -46,7 +51,6 @@ class _CarouselState extends State<Carousel> {
               },
             ),
           ),
-          //
           Positioned(
             bottom: 10.0,
             child: SizedBox(
@@ -57,7 +61,7 @@ class _CarouselState extends State<Carousel> {
                   return GestureDetector(
                     onTap: () => {},
                     child: AnimatedContainer(
-                      duration: Duration(milliseconds: 300),
+                      duration: Duration(milliseconds: 0),
                       curve: Curves.easeInOut,
                       width: 15.0,
                       height: 15.0,
@@ -78,7 +82,6 @@ class _CarouselState extends State<Carousel> {
               ),
             ),
           ),
-
           Positioned(
               right: 10,
               child: Text(

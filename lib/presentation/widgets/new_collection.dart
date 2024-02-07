@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment/presentation/utils/app_text_styles.dart';
+import 'package:flutter_assignment/presentation/widgets/loader.dart';
 
 import '../utils/app_colors.dart';
 
@@ -84,24 +86,15 @@ class CollectionContainer extends StatelessWidget {
               Positioned(
                 right: 10,
                 top: 1,
-                child: Container(
+                child: CachedNetworkImage(
                   width: 119,
                   height: 158,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover, image: AssetImage(assetImage!))),
+                  fit: BoxFit.cover,
+                  imageUrl: assetImage!,
+                  placeholder: (context, url) => Loader(),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
-              ),
-              // Positioned(
-              //   right: 10,
-              //   child: Container(
-              //     width: 66,
-              //     height: 66,
-              //     decoration: BoxDecoration(
-              //         color: AppColors().circularShapeColor,
-              //         shape: BoxShape.circle),
-              //   ),
-              // ),
+              )
             ],
           ),
         )

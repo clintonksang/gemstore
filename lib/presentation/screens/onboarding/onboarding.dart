@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment/presentation/utils/app_colors.dart';
 import 'package:flutter_assignment/routes/router.dart';
+import 'package:flutter_assignment/routes/routes.dart';
 
 import '../../utils/app_text_styles.dart';
 import '../../widgets/custom_button.dart';
@@ -49,8 +50,7 @@ class Onboarding extends StatelessWidget {
                 CustomButton(
                   label: 'Get Started',
                   onPressed: () {
-                    Navigator.pushReplacementNamed(
-                        context, AppRouter.dashboard);
+                    Navigator.pushNamed(context, AppRouter.dashboard);
                   },
                   borderlineColor: AppColors().primaryColor,
                   buttonColor: AppColors().primaryColor.withOpacity(.5),

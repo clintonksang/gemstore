@@ -23,7 +23,18 @@ class AppTextStyle {
     );
   }
 
-    static TextStyle light({Color? color}) {
+  static TextStyle normal({Color? color}) {
+    return TextStyle(
+      fontFamily: 'ProductSans',
+      fontWeight: FontWeight.normal,
+      fontSize: 14,
+
+      color:
+          color ?? AppColors().greyTextColor, // Default color if none provided
+    );
+  }
+
+  static TextStyle light({Color? color}) {
     return TextStyle(
       fontFamily: 'ProductSans-Light',
       fontWeight: FontWeight.w100,

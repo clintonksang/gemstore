@@ -9,38 +9,37 @@ environment:
   sdk: ">=3.2.6 <4.0.0"
 
 dependencies:
+  animated_rating_stars: ^1.0.1
+  cached_network_image: ^3.3.1
   carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.0.2
-  animated_rating_stars: ^1.0.1
   flutter_svg: ^2.0.9
   google_fonts: ^6.1.0
   logger: ^2.0.2+1
   page_transition: ^2.1.0
   persistent_bottom_nav_bar: ^5.0.2
   provider: ^6.0.5
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_flavorizr: null
-  flutter_launcher_icons: ^0.13.1
   flutter_lints: ^2.0.0
-  flutter_native_splash: ^2.2.19
+  flutter_native_splash: ^2.3.10
   flutter_test:
     sdk: flutter
   path: any
 
-flutter_launcher_icons:
-  android: true
-  ios: true
-  image_path: "assets/logo.png"
-  background_color: "#FFFFFF"
-
 flutter_native_splash:
-  image: "assets/images/gemstore.png"
   color: "#FFFFFF"
+  image: assets/images/gemstore.jpg
+  android: true
 
+# flutter_native_splash:
+#   image: "assets/images/gemstore.jpg"
+#   color: "#FFFFFF"
 flutter:
   uses-material-design: true
   assets:

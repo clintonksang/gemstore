@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment/presentation/utils/app_colors.dart';
 import 'package:flutter_assignment/presentation/utils/app_text_styles.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Reccomended extends StatelessWidget {
   final String? assetImage;
@@ -27,14 +29,29 @@ class Reccomended extends StatelessWidget {
               width: 150,
               height: 66,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(assetImage!), fit: BoxFit.cover),
                 border: Border.all(width: 3.0, color: Colors.transparent),
-                borderRadius: BorderRadius.all(Radius.circular(15.0) //
-
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15.0),
+                child: CachedNetworkImage(
+                  imageUrl: assetImage!,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: Container(
+                      color: Colors.white,
+                      width: 150,
+                      height: 66,
                     ),
+                  ),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
               ),
             ),
+
+           
             Spacer(),
             Container(
                 width: 150,

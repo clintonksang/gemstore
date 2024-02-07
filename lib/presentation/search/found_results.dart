@@ -1,11 +1,12 @@
-import 'package:animated_rating_stars/animated_rating_stars.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment/data/models/search_model.dart';
 import 'package:flutter_assignment/presentation/utils/app_colors.dart';
 import 'package:flutter_assignment/presentation/utils/app_text_styles.dart';
 import 'package:flutter_assignment/presentation/widgets/back_button.dart';
 
+import '../../domain/service/search_service.dart';
 import '../widgets/custom_button.dart';
-import '../widgets/fetured_container.dart'; // Ensure the spelling is correct here as well.
+import '../widgets/search_container.dart';
 
 class FoundResults extends StatefulWidget {
   final String results;
@@ -16,7 +17,14 @@ class FoundResults extends StatefulWidget {
 }
 
 class _FoundResultsState extends State<FoundResults> {
-  double value = 3.5;
+  late List<SearchModel> dressItems;
+
+  @override
+  void initState() {
+    super.initState();
+    dressItems = fetchDressItems();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -66,35 +74,34 @@ class _FoundResultsState extends State<FoundResults> {
                       )
                     ],
                   ),
-                  const SizedBox(
-                      height: 10), // Add some spacing before the grid
-                  // Wrap GridView.builder with Expanded
+                  const SizedBox(height: 10),
+
                   GridView.builder(
-                    // It's important to limit the physics to avoid conflicts with the parent SingleChildScrollView
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    padding: const EdgeInsets.all(8),
                     physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap:
-                        true, // Use it to let GridView know it needs to manage its own size
-                    padding: EdgeInsets.all(8), // Adjust padding as needed
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, // Number of columns
-                      crossAxisSpacing: 2, // Horizontal spacing between items
-                      mainAxisSpacing: 10, // Vertical spacing between items
-                      childAspectRatio: 0.75, // Aspect ratio of each item
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 1,
+                      mainAxisSpacing: 80,
+                      childAspectRatio: .75,
                     ),
-                    itemCount:
-                        10, // Number of items in the grid, adjust as needed
+                    itemCount: dressItems.length,
                     itemBuilder: (BuildContext context, int index) {
-                      // Return an instance of FeaturedContainer for each grid item
-                      return FeaturedContainer(
-                        hasLike: true,
-                        image:
-                            'assets/images/lady7.png', // Ensure the image path is correct
-                        productName: 'Linen Dress',
-                        productPrice: '52.00',
-                        starCount: 4,
+                      SearchModel item = dressItems[index];
+                      return Container(
+                        height: 350,
+                        child: SearchContainer(
+                          image: item.image,
+                          productName: item.productName,
+                          productPrice: item.productPrice,
+                          starCount: item.starCount.toDouble(),
+                        ),
                       );
                     },
-                  ),
+                  )
                 ],
               ),
             ),

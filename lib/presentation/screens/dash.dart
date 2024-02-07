@@ -15,11 +15,19 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   Color activeColor = AppColors().secondaryColor;
   late PersistentTabController _controller;
+  late PageController _pageController;
 
   @override
   void initState() {
     super.initState();
     _controller = PersistentTabController(initialIndex: 0);
+    _pageController = PageController(initialPage: 0);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   List<Widget> _buildScreens() {
@@ -89,6 +97,7 @@ class _DashboardState extends State<Dashboard> {
       screens: _buildScreens(),
       items: _navBarsItems(),
       navBarHeight: 50,
+      
       onItemSelected: (value) {
         setState(() {
           activeColor = AppColors().secondaryColor;

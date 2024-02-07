@@ -1,8 +1,10 @@
 import 'package:animated_rating_stars/animated_rating_stars.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment/presentation/utils/app_text_styles.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shimmer/shimmer.dart';
 
 class FeaturedContainer extends StatelessWidget {
   final bool? hasLike;
@@ -28,37 +30,82 @@ class FeaturedContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             // CONTAINER
+
             Container(
               width: 126,
               height: 227,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(
-                        image!,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Stack(
+                  children: [
+                    CachedNetworkImage(
+                      imageUrl:
+                          image!, // Assuming `image` is now a network image URL
+                      fit: BoxFit.fitHeight,
+                      width: 126,
+                      height: 227,
+                      placeholder: (context, url) => Shimmer.fromColors(
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!,
+                        child: Container(
+                          color: Colors.white,
+                          width: 150,
+                          height: 66,
+                        ),
                       ),
-                      fit: BoxFit.fitHeight),
-                  borderRadius: BorderRadius.circular(15)),
-              child: Stack(
-                children: [
-                  hasLike!
-                      ? Positioned(
-                          top: 5,
-                          right: 10,
-                          child: CircleAvatar(
-                            radius: 13,
-                            backgroundColor: Colors.white,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: SvgPicture.asset(
-                                "assets/images/svg/heart.svg",
-                                color: Colors.red,
-                              ),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
+                    if (hasLike!)
+                      Positioned(
+                        top: 5,
+                        right: 10,
+                        child: CircleAvatar(
+                          radius: 13,
+                          backgroundColor: Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SvgPicture.asset(
+                              "assets/images/svg/heart.svg",
+                              color: Colors.red,
                             ),
-                          ))
-                      : Container()
-                ],
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ),
+            // Container(
+            //   width: 126,
+            //   height: 227,
+            //   decoration: BoxDecoration(
+            //       image: DecorationImage(
+            //           image: AssetImage(
+            //             image!,
+            //           ),
+            //           fit: BoxFit.fitHeight),
+            //       borderRadius: BorderRadius.circular(15)),
+            //   child: Stack(
+            //     children: [
+            //       hasLike!
+            //           ? Positioned(
+            //               top: 5,
+            //               right: 10,
+            //               child: CircleAvatar(
+            //                 radius: 13,
+            //                 backgroundColor: Colors.white,
+            //                 child: Padding(
+            //                   padding: const EdgeInsets.all(8.0),
+            //                   child: SvgPicture.asset(
+            //                     "assets/images/svg/heart.svg",
+            //                     color: Colors.red,
+            //                   ),
+            //                 ),
+            //               ))
+            //           : Container()
+            //     ],
+            //   ),
+            // ),
 
             Align(
               alignment: Alignment.centerLeft,
