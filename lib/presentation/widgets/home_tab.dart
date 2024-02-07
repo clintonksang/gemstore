@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment/presentation/utils/app_colors.dart';
 import 'package:flutter_svg/svg.dart';
-// Assuming AppColors is defined and flutter_svg package is imported correctly
-// import 'package:flutter_svg/flutter_svg.dart';
-
+ 
 class HomeTab extends StatefulWidget {
   @override
   _HomeTabState createState() => _HomeTabState();
@@ -36,7 +34,7 @@ class _HomeTabState extends State<HomeTab> {
               customTab(2, 'assets/images/svg/accessories.svg', 'Accessories'),
               customTab(3, 'assets/images/svg/beauty.svg', 'Beauty'),
             ],
-            indicatorColor: Colors.transparent, // Hide the default indicator
+            indicatorColor: Colors.transparent, 
           ),
         ),
       ),

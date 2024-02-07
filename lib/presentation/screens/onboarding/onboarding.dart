@@ -11,11 +11,11 @@ class Onboarding extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          // Image at the bottom
+        
           Container(
             decoration: BoxDecoration(
               color: AppColors()
-                  .secondaryColor, // Assuming this is defined elsewhere
+                  .secondaryColor, 
               image: const DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage('assets/images/onboarding.png'),

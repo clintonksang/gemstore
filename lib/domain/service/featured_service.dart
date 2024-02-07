@@ -24,6 +24,20 @@ class FeaturedItemService {
         "productName": "Sportwear Set",
         "productPrice": "80.00",
       },
+      {
+        "image":
+            "https://firebasestorage.googleapis.com/v0/b/xplore-26809.appspot.com/o/lady5.jpg?alt=media&token=4aebda0f-9ebf-4ae8-a9af-05d45a31197d",
+        "hasLike": false,
+        "productName": "Long Sleeve Dress",
+        "productPrice": "45.00",
+      },
+      {
+        "image":
+            "https://firebasestorage.googleapis.com/v0/b/xplore-26809.appspot.com/o/lady5.jpg?alt=media&token=4aebda0f-9ebf-4ae8-a9af-05d45a31197d",
+        "hasLike": false,
+        "productName": "Long Sleeve Dress",
+        "productPrice": "45.00",
+      },
     ];
 
     return itemsJson

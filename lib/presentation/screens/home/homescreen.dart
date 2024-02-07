@@ -1,5 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment/data/models/featured_model.dart';
 import 'package:flutter_assignment/presentation/widgets/fab_container.dart';
@@ -25,12 +23,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late List<FeaturedItem> featuredItems;
+  bool showFeaturedGrid = false;
+
   @override
   void initState() {
-    // TODO: implement initState
-    featuredItems = FeaturedItemService.getFeaturedItems();
-
     super.initState();
+    featuredItems = FeaturedItemService.getFeaturedItems();
   }
 
   @override
@@ -44,14 +42,10 @@ class _HomeScreenState extends State<HomeScreen> {
             //Sliver AppBar
             SliverAppBar(
               backgroundColor: AppColors().primaryColor,
-
               floating: true,
               pinned: false,
               snap: false,
               forceElevated: false,
-              // backgroundColor: Colors.white,
-              // foregroundColor: Colors.red,
-              // shadowColor: Colors.yellow,
               elevation: 1,
               leading: IconButton(
                 icon: SvgPicture.asset('assets/images/svg/drawer.svg'),
@@ -81,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 200,
                     child: Carousel())),
 
+           // FEATURED SECTION(Expandable)
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -94,40 +89,67 @@ class _HomeScreenState extends State<HomeScreen> {
                           'Featured Products',
                           style: AppTextStyle.title(),
                         ),
-                        Text(
-                          'show all',
-                          style: TextStyle(color: AppColors().greyTextColor),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              showFeaturedGrid = !showFeaturedGrid;
+                            });
+                          },
+                          child: Text(
+                            'show all',
+                            style: TextStyle(color: AppColors().greyTextColor),
+                          ),
                         ),
                       ],
                     )),
               ),
             ),
 
-            // Featured
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 290,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: featuredItems.length,
-                    itemBuilder: (context, index) {
-                      FeaturedItem item = featuredItems[index];
-                      return FeaturedContainer(
-                        image: item.image,
-                        hasLike: item.hasLike,
-                        productName: item.productName,
-                        productPrice: item.productPrice,
-                      );
-                    },
+            //  expand featured items`
+            if (showFeaturedGrid)
+              SliverGrid(
+                gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.75,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                    FeaturedItem item = featuredItems[index];
+                    return FeaturedContainer(
+                      image: item.image,
+                      hasLike: item.hasLike,
+                      productName: item.productName,
+                      productPrice: item.productPrice,
+                    );
+                  },
+                  childCount: featuredItems.length,
+                ),
+              )
+            else
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 290,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: featuredItems.length,
+                      itemBuilder: (context, index) {
+                        FeaturedItem item = featuredItems[index];
+                        return FeaturedContainer(
+                          image: item.image,
+                          hasLike: item.hasLike,
+                          productName: item.productName,
+                          productPrice: item.productPrice,
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
-            ),
 
-            // new collection
+            // New collection
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -145,7 +167,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            // reccomended
+            // Reccomended
+            
+            
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -243,6 +267,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
+            // bottom container
             SliverToBoxAdapter(
               child: Container(
                 height: 250,

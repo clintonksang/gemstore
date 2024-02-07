@@ -2,6 +2,7 @@ import 'package:animated_rating_stars/animated_rating_stars.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment/presentation/utils/app_colors.dart';
 import 'package:flutter_assignment/presentation/utils/app_text_styles.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shimmer/shimmer.dart';
@@ -42,8 +43,7 @@ class FeaturedContainer extends StatelessWidget {
                 child: Stack(
                   children: [
                     CachedNetworkImage(
-                      imageUrl:
-                          image!, // Assuming `image` is now a network image URL
+                      imageUrl: image!,
                       fit: BoxFit.fitHeight,
                       width: 126,
                       height: 227,
@@ -78,37 +78,6 @@ class FeaturedContainer extends StatelessWidget {
                 ),
               ),
             ),
-            // Container(
-            //   width: 126,
-            //   height: 227,
-            //   decoration: BoxDecoration(
-            //       image: DecorationImage(
-            //           image: AssetImage(
-            //             image!,
-            //           ),
-            //           fit: BoxFit.fitHeight),
-            //       borderRadius: BorderRadius.circular(15)),
-            //   child: Stack(
-            //     children: [
-            //       hasLike!
-            //           ? Positioned(
-            //               top: 5,
-            //               right: 10,
-            //               child: CircleAvatar(
-            //                 radius: 13,
-            //                 backgroundColor: Colors.white,
-            //                 child: Padding(
-            //                   padding: const EdgeInsets.all(8.0),
-            //                   child: SvgPicture.asset(
-            //                     "assets/images/svg/heart.svg",
-            //                     color: Colors.red,
-            //                   ),
-            //                 ),
-            //               ))
-            //           : Container()
-            //     ],
-            //   ),
-            // ),
 
             Align(
               alignment: Alignment.centerLeft,
@@ -133,21 +102,18 @@ class FeaturedContainer extends StatelessWidget {
                     initialRating: starCount!,
                     minRating: 0.0,
                     maxRating: 5.0,
-                    filledColor: Colors.green,
-                    emptyColor: Colors.green,
+                    filledColor: AppColors().starGreen,
+                    emptyColor: AppColors().starGreen,
                     filledIcon: Icons.star,
                     halfFilledIcon: Icons.star_half,
                     emptyIcon: Icons.star_border,
-                    onChanged: (double rating) {
-                      // Handle the rating change here
-                      print('Rating: $rating');
-                    },
+                    onChanged: (double rating) {},
                     displayRatingValue: true,
                     interactiveTooltips: true,
                     customFilledIcon: Icons.star,
                     customHalfFilledIcon: Icons.star_half,
                     customEmptyIcon: Icons.star_border,
-                    starSize: 15.0,
+                    starSize: 10.0,
                     animationDuration: Duration(milliseconds: 300),
                     animationCurve: Curves.easeInOut,
                     readOnly: false,
