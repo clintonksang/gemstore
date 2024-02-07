@@ -79,12 +79,11 @@ class _FoundResultsState extends State<FoundResults> {
                   GridView.builder(
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    padding: const EdgeInsets.all(8),
                     physics: NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      crossAxisSpacing: 1,
+                      crossAxisSpacing: 2,
                       mainAxisSpacing: 80,
                       childAspectRatio: .75,
                     ),
@@ -94,13 +93,12 @@ class _FoundResultsState extends State<FoundResults> {
                       return Container(
                         height: 350,
                         child: SearchContainer(
-                          image: item.image,
-                          productName: item.productName,
-                          productPrice: item.productPrice,
-                          starCount: item.starCount.toDouble(),
-                          reviews: item.reviews,
-                         isLiked:  item.hasLike
-                        ),
+                            image: item.image,
+                            productName: item.productName,
+                            productPrice: item.productPrice,
+                            starCount: item.starCount.toDouble(),
+                            reviews: item.reviews,
+                            isLiked: item.hasLike),
                       );
                     },
                   )

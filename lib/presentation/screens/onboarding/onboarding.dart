@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment/presentation/utils/app_colors.dart';
 import 'package:flutter_assignment/routes/router.dart';
-import 'package:flutter_assignment/routes/routes.dart';
 
 import '../../utils/app_text_styles.dart';
 import '../../widgets/custom_button.dart';

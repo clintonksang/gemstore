@@ -26,7 +26,7 @@ class _FabContainerState extends State<FabContainer> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: AppColors().inactiveButtonColor,
+                color: Colors.grey[100],
               ),
               width: screenSize.width / 2,
               height: 250,

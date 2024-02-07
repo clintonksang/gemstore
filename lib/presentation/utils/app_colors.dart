@@ -8,6 +8,8 @@ class AppColors {
   Color activeButtonColor = const Color(0XFF3A2C27);
   Color inactiveButtonColor = Color.fromARGB(255, 210, 210, 210);
   Color greyTextColor = const Color(0XFF9B9B9B);
+  Color homegreyTextColor = const Color(0XFF777E90);
+  Color darkgreytectColor = const Color(0XFF353945);   
   Color secondaryContainerColor = const Color(0XFFF8F8FA);
   Color orderContainerColor = const Color(0XFFF9F9F9);
   Color circularShapeColor = const Color(0XFFE2E2E2);

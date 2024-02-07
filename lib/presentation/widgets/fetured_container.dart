@@ -34,6 +34,9 @@ class FeaturedContainer extends StatelessWidget {
             Container(
               width: 126,
               height: 227,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.grey[300]!),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Stack(

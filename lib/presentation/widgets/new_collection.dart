@@ -36,18 +36,14 @@ class CollectionContainer extends StatelessWidget {
               children: [
                 Text(
                   title!,
-                  // '| NEW COLLECTION',
                   style: AppTextStyle.light().copyWith(fontSize: 12),
                 ),
                 Spacer(),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    bodyText!,
-                    // 'HANG OUT \n& PARTY',
-                    style: AppTextStyle.light().copyWith(
-                        color: AppColors().secondaryColor, fontSize: 20),
-                  ),
+                  child: Text(bodyText!,
+                    
+                      style: AppTextStyle.semilight()),
                 ),
               ],
             ),

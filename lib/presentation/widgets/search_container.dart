@@ -33,7 +33,7 @@ class _SearchContainerState extends State<SearchContainer> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(9.0),
+      padding: const EdgeInsets.symmetric(horizontal: 9.0),
       child: Container(
         width: 120,
         height: 340,
@@ -83,9 +83,7 @@ class _SearchContainerState extends State<SearchContainer> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: SvgPicture.asset(
                                   "assets/images/svg/heart.svg",
-                                  color: widget.isLiked!
-                                      ? Colors.red
-                                      : Colors.grey,
+                                  color: isLiked! ? Colors.red : Colors.grey,
                                 ),
                               ),
                             ),

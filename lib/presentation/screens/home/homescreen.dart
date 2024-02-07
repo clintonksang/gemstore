@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverToBoxAdapter(
                 child: SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    height: 250,
+                    height: 200,
                     child: Carousel())),
 
             SliverToBoxAdapter(
@@ -232,7 +232,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: MediaQuery.of(context).size.width,
                   height: 171,
                   child: const CollectionContainer(
-                    title: "Summer Collection 2021",
+                    title: "| Summer Collection 2021",
                     bodyText: 'Most sexy\n& fabulous\ndesign ',
                     assetImage:
                         'https://firebasestorage.googleapis.com/v0/b/xplore-26809.appspot.com/o/lady_9.png?alt=media&token=d334d43c-297f-4f19-9cb1-66bee463077e',

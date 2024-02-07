@@ -30,8 +30,8 @@ class ButtonBack extends StatelessWidget {
       child: Center(
         child: SvgPicture.asset(
           'assets/images/svg/arrow_back.svg',
-          width: 20,
-          height: 20,
+          width: 15,
+          height: 15,
         ),
       ),
     );
