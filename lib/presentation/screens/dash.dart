@@ -91,24 +91,31 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      context,
-      controller: _controller,
-      screens: _buildScreens(),
-      items: _navBarsItems(),
-      navBarHeight: 50,
-      
-      onItemSelected: (value) {
-        setState(() {
-          activeColor = AppColors().secondaryColor;
-        });
-      },
-      confineInSafeArea: true,
-      screenTransitionAnimation: const ScreenTransitionAnimation(
-        animateTabTransition: true,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(8),
+          topRight: Radius.circular(8),
+        ),
       ),
-      backgroundColor: Colors.white,
-      navBarStyle: NavBarStyle.style6,
+      child: PersistentTabView(
+        context,
+        controller: _controller,
+        screens: _buildScreens(),
+        items: _navBarsItems(),
+        navBarHeight: 100,
+        onItemSelected: (value) {
+          setState(() {
+            activeColor = AppColors().secondaryColor;
+          });
+        },
+        confineInSafeArea: true,
+        screenTransitionAnimation: const ScreenTransitionAnimation(
+          animateTabTransition: true,
+        ),
+        backgroundColor: Colors.white,
+        navBarStyle: NavBarStyle.style6,
+      ),
     );
   }
 }

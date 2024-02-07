@@ -98,6 +98,8 @@ class _FoundResultsState extends State<FoundResults> {
                           productName: item.productName,
                           productPrice: item.productPrice,
                           starCount: item.starCount.toDouble(),
+                          reviews: item.reviews,
+                         isLiked:  item.hasLike
                         ),
                       );
                     },

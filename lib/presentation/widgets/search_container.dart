@@ -10,13 +10,17 @@ import 'package:shimmer/shimmer.dart';
 class SearchContainer extends StatefulWidget {
   final double? starCount;
   final String? image;
+  final bool? isLiked;
   final String? productName;
+  final String? reviews;
   final String? productPrice;
   const SearchContainer(
       {super.key,
       required this.image,
       this.starCount,
+      this.isLiked,
       required this.productName,
+      required this.reviews,
       required this.productPrice});
 
   @override
@@ -25,6 +29,7 @@ class SearchContainer extends StatefulWidget {
 
 class _SearchContainerState extends State<SearchContainer> {
   bool isLiked = false;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -78,7 +83,9 @@ class _SearchContainerState extends State<SearchContainer> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: SvgPicture.asset(
                                   "assets/images/svg/heart.svg",
-                                  color: isLiked ? Colors.red : Colors.grey,
+                                  color: widget.isLiked!
+                                      ? Colors.red
+                                      : Colors.grey,
                                 ),
                               ),
                             ),
@@ -102,25 +109,38 @@ class _SearchContainerState extends State<SearchContainer> {
                           "\$${widget.productPrice}",
                           style: AppTextStyle.subtitle().copyWith(fontSize: 16),
                         ),
-                        AnimatedRatingStars(
-                          initialRating: widget.starCount!,
-                          minRating: 0.0,
-                          maxRating: 5.0,
-                          filledColor: AppColors().starGreen,
-                          emptyColor: AppColors().starGreen,
-                          filledIcon: Icons.star,
-                          halfFilledIcon: Icons.star_half,
-                          emptyIcon: Icons.star_border,
-                          onChanged: (double rating) {},
-                          displayRatingValue: true,
-                          interactiveTooltips: true,
-                          customFilledIcon: Icons.star,
-                          customHalfFilledIcon: Icons.star_half,
-                          customEmptyIcon: Icons.star_border,
-                          starSize: 15.0,
-                          animationDuration: Duration(milliseconds: 300),
-                          animationCurve: Curves.easeInOut,
-                          readOnly: false,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Flexible(
+                              flex: 3,
+                              child: AnimatedRatingStars(
+                                initialRating: widget.starCount!,
+                                minRating: 0.0,
+                                maxRating: 5.0,
+                                filledColor: AppColors().starGreen,
+                                emptyColor: AppColors().starGreen,
+                                filledIcon: Icons.star,
+                                halfFilledIcon: Icons.star_half,
+                                emptyIcon: Icons.star_border,
+                                onChanged: (double rating) {},
+                                displayRatingValue: true,
+                                interactiveTooltips: true,
+                                customFilledIcon: Icons.star,
+                                customHalfFilledIcon: Icons.star_half,
+                                customEmptyIcon: Icons.star_border,
+                                starSize: 15.0,
+                                animationDuration: Duration(milliseconds: 300),
+                                animationCurve: Curves.easeInOut,
+                                readOnly: false,
+                              ),
+                            ),
+                            Text(
+                              '(${widget.reviews!})',
+                              style: AppTextStyle.subtitle()
+                                  .copyWith(fontSize: 8, color: Colors.black),
+                            )
+                          ],
                         )
                       ],
                     ),

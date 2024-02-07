@@ -2,12 +2,15 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment/data/models/featured_model.dart';
+import 'package:flutter_assignment/presentation/widgets/fab_container.dart';
 import 'package:flutter_assignment/presentation/widgets/fetured_container.dart';
 import 'package:flutter_assignment/presentation/widgets/reccomended.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_assignment/presentation/utils/app_colors.dart';
 import 'package:flutter_assignment/presentation/utils/app_text_styles.dart';
 
+import '../../../data/models/fab_items.dart';
+import '../../../domain/service/fab_service.dart';
 import '../../../domain/service/featured_service.dart';
 import '../../widgets/carousel_slider.dart';
 import '../../widgets/home_tab.dart';
@@ -33,12 +36,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors().primaryColor,
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: CustomScrollView(
           slivers: <Widget>[
             //Sliver AppBar
             SliverAppBar(
+              backgroundColor: AppColors().primaryColor,
+
               floating: true,
               pinned: false,
               snap: false,
@@ -46,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
               // backgroundColor: Colors.white,
               // foregroundColor: Colors.red,
               // shadowColor: Colors.yellow,
-              elevation: 0,
+              elevation: 1,
               leading: IconButton(
                 icon: SvgPicture.asset('assets/images/svg/drawer.svg'),
                 onPressed: () {},
@@ -120,7 +126,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-     
 
             // new collection
             SliverToBoxAdapter(
@@ -237,6 +242,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+
+            SliverToBoxAdapter(
+              child: Container(
+                height: 250,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: FabService.fetchFabItems().length,
+                  itemBuilder: (context, index) {
+                    FabItem item = FabService.fetchFabItems()[index];
+                    return SizedBox(
+                      width: MediaQuery.of(context).size.width * .45,
+                      child: FabContainer(
+                        image: item.image,
+                        subtitle: item.subtitle,
+                        title: item.title,
+                      ),
+                    );
+                  },
+                ),
+              ),
+            )
           ],
         ),
       ),

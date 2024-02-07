@@ -6,7 +6,7 @@ class AppColors {
 
   Color backgroundColor = const Color(0xffFFFFFF);
   Color activeButtonColor = const Color(0XFF3A2C27);
-  Color inactiveButtonColor = const Color(0XFFF3F3F3);
+  Color inactiveButtonColor = Color.fromARGB(255, 210, 210, 210);
   Color greyTextColor = const Color(0XFF9B9B9B);
   Color secondaryContainerColor = const Color(0XFFF8F8FA);
   Color orderContainerColor = const Color(0XFFF9F9F9);
@@ -17,10 +17,9 @@ class AppColors {
   // #
   Color blackTabColor = const Color(0XFF43484B);
   Color greyContainer = const Color(0XFF575757);
- 
 
   // #
-  
+
   // ≈
   // background: #;
 
